@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Service
-@FeignClient(name = "spring-cloud-eureka-apiinfo")
+@FeignClient(name = "spring-cloud-eureka-apiinfo" ,fallback = com.cloud.applications.stuapplications.service.StuApplicationFallBackService.class)
 public interface StuApplicationService{
 
     /**
