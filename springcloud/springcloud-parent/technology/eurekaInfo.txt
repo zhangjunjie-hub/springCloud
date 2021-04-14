@@ -1,0 +1,15 @@
+本项目中使用到的eureka相关的技术点
+服务端：
+第一：要先添加对应的依赖，然后在对应的启动类上添加eureka开启服务端注解
+第二：对应的application.properties文件中添加对应的属性信息
+      主要的属性信息包括：eureka的port、host、是否被发现、是否从注册中心获取信息、以及服务端的
+      eureka.client.register-with-eureka=false
+      #表示是否从eureka注册中心中获取注册信息,默认为true
+      eureka.client.fetch-registry=false
+      #所以 在一个分布式系统中，设置最少两个服务注册中心是最基本的
+      eureka.client.serviceUrl.defaultZone=http://${eureka.instance.hostname}:${server.port}/eureka/
+
+
+
+
+

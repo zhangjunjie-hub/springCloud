@@ -7,6 +7,7 @@ import com.springcloud.springcloudeurekaapiinfo.utils.RedisUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -26,6 +27,10 @@ public class StudentService {
     }
 
 
+    /**
+     * 获取所有的用户信息
+     * @return
+     */
     public List<Student> getAllStudents() {
         List<Student> allStudents = null ;
         //这里先从redis缓存中获取，
@@ -40,4 +45,32 @@ public class StudentService {
         }
         return allStudents;
     }
+
+    /**
+     * 根据用户名获取用户信息
+     * @param userName
+     * @return
+     */
+    public Student getStudengByUserName(String userName){
+           if(StringUtils.isBlank(userName)){
+               return null;
+           }else{
+
+
+           }
+
+
+
+        return null;
+    }
+
+
+
+
+
+
+
+
+
+
 }

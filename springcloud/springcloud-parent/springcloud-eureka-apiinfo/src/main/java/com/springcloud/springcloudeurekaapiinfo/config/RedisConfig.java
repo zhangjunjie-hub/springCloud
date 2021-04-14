@@ -47,8 +47,8 @@ public class RedisConfig extends JCacheConfigurerSupport {
     private String host;
     @Value("${spring.redis.port}")
     private Integer port;
-    @Value("${spring.redis.password}")
-    private String password;
+   // @Value("${spring.redis.password}")
+   // private String password;
     @Value("${spring.redis.database}")
     private String database;
     @Value("${spring.redis.timeout}")
@@ -68,7 +68,8 @@ public class RedisConfig extends JCacheConfigurerSupport {
         jedisPoolConfig.setBlockWhenExhausted(blockWhenExhausted);
         // 是否启用pool的jmx管理功能, 默认true
         jedisPoolConfig.setJmxEnabled(true);
-        JedisPool jedisPool = new JedisPool(jedisPoolConfig, host, port, timeout, password);
+        //JedisPool jedisPool = new JedisPool(jedisPoolConfig, host, port, timeout, password);
+        JedisPool jedisPool = new JedisPool(jedisPoolConfig, host, port, timeout, null);
         return jedisPool;
     }
 

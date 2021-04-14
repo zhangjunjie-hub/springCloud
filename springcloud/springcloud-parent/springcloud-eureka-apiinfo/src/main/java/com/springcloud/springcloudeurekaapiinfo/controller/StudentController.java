@@ -33,6 +33,21 @@ public class StudentController implements StudentControllerInterface {
         return studentService.getAllStudents();
     }
 
+    /**
+     * 根据用户名查找用户是否存在
+     * 这个是在用户注册的时候，检测用户名是否可用
+     * @param userName
+     * @return
+     */
+    @GetMapping("/getUserInfoByUserName")
+    @Override
+    public Student getUserInfoByUserName(@PathVariable String userName){
+        return studentService.getStudengByUserName(userName);
+    }
+
+
+
+
 
 
 
