@@ -1,6 +1,7 @@
 package com.springcloud.springcloudeurekaapiinfo.mapper;
 
 import com.springcloud.springcloudeurekaapiinfo.dto.Student;
+import com.springcloud.springcloudeurekaapiinfo.dto.StudentWapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -20,4 +21,10 @@ public interface StudentMapper {
      * @return
      */
     List<Student> getAllStudents();
+
+    /**
+     * 根据用户名查询对应的用户信息
+     * @param userName
+     */
+    Student getUserInfoByUserName(String userName);
 }

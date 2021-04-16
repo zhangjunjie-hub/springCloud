@@ -19,6 +19,7 @@
         <module>springcloud-ms-eureka</module>
         <module>springcloud-eureka-apiinfo</module>
         <module>stuapplications</module>
+        <module>springcloud_zuul</module>
     </modules>
 
     <parent>

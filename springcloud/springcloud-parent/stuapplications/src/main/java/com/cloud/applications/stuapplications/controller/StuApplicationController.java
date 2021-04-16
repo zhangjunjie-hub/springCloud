@@ -1,7 +1,8 @@
 package com.cloud.applications.stuapplications.controller;
 
-import com.cloud.applications.stuapplications.dao.StudentDao;
+
 import com.cloud.applications.stuapplications.dto.Student;
+import com.cloud.applications.stuapplications.dto.StudentWapper;
 import com.cloud.applications.stuapplications.service.StuApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/appStudent")
+@RequestMapping("/studentApp")
 public class StuApplicationController {
 
     @Autowired
@@ -25,6 +26,10 @@ public class StuApplicationController {
         List<Student> list = stuApplicationService.getAllStudents();
         return list;
     }
+    @GetMapping("/getUserInfoByUserName/{userName}")
+    public StudentWapper getUserInfoByUserName(@PathVariable String userName){
+        return stuApplicationService.getUserInfoByUserName(userName);
+    };
 
 
 

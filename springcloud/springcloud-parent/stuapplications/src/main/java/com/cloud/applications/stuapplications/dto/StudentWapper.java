@@ -1,4 +1,4 @@
-package com.springcloud.springcloudeurekaapiinfo.dto;
+package com.cloud.applications.stuapplications.dto;
 
 import com.alibaba.fastjson.JSONObject;
 
@@ -7,7 +7,7 @@ import com.alibaba.fastjson.JSONObject;
  * 这个是用来封装用户相关的信息以及
  * 一些提示信息
  */
-public class StudentWapper  {
+public class StudentWapper {
     private Message message;
     private Student student;
 

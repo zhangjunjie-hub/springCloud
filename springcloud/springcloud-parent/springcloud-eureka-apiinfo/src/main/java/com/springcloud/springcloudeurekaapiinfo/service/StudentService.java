@@ -1,7 +1,10 @@
 package com.springcloud.springcloudeurekaapiinfo.service;
 
+import ch.qos.logback.classic.spi.STEUtil;
 import com.alibaba.fastjson.JSONObject;
+import com.springcloud.springcloudeurekaapiinfo.dto.Message;
 import com.springcloud.springcloudeurekaapiinfo.dto.Student;
+import com.springcloud.springcloudeurekaapiinfo.dto.StudentWapper;
 import com.springcloud.springcloudeurekaapiinfo.mapper.StudentMapper;
 import com.springcloud.springcloudeurekaapiinfo.utils.RedisUtils;
 import org.apache.commons.lang.StringUtils;
@@ -17,6 +20,7 @@ public class StudentService {
     private StudentMapper studentMapper;
     @Autowired
     private RedisUtils redisUtils;
+    public static final String SINGLE_STUDENT_FLAG = "single_student_";
 
     /**
      * 添加学生信息
@@ -51,17 +55,38 @@ public class StudentService {
      * @param userName
      * @return
      */
-    public Student getStudengByUserName(String userName){
+    public StudentWapper getUserInfoByUserName(String userName){
+        StudentWapper wapper = new StudentWapper();
            if(StringUtils.isBlank(userName)){
-               return null;
+               wapper.setMessage(new Message("400","用户名称为空，查询失败"));
            }else{
+               //先从redis中获取对应的缓存信息
+               String s = redisUtils.get(SINGLE_STUDENT_FLAG + userName);
+               if(StringUtils.isNotBlank(s)){
+                   Student student = JSONObject.parseObject(s,Student.class);
+                   if(null != student){
+                       wapper.setStudent(student);
+                       wapper.setMessage(new Message("200","查询成功"));
+                   }
+               }else{
+                   //如果缓存中不存在的情况下，则查询数据库数据，并将查询结果存入到redis中
+                   Student student = studentMapper.getUserInfoByUserName(userName);
+                   if(null != student){
+                       wapper.setStudent(student);
+                       wapper.setMessage(new Message("200","查询到对应的数据"));
+                       redisUtils.set(SINGLE_STUDENT_FLAG + userName,JSONObject.toJSONString(student),0);
+                   }else{
+                       wapper.setMessage(new Message("200","查询数据为空"));
+                   }
 
+
+               }
 
            }
 
 
 
-        return null;
+        return wapper;
     }
 
 

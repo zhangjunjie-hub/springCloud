@@ -1,6 +1,7 @@
 package com.springcloud.springcloudeurekaapiinfo.controller;
 
 import com.springcloud.springcloudeurekaapiinfo.dto.Student;
+import com.springcloud.springcloudeurekaapiinfo.dto.StudentWapper;
 import com.springcloud.springcloudeurekaapiinfo.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,10 +40,10 @@ public class StudentController implements StudentControllerInterface {
      * @param userName
      * @return
      */
-    @GetMapping("/getUserInfoByUserName")
+    @GetMapping("/getUserInfoByUserName/{userName}")
     @Override
-    public Student getUserInfoByUserName(@PathVariable String userName){
-        return studentService.getStudengByUserName(userName);
+    public StudentWapper getUserInfoByUserName(@PathVariable String userName){
+        return studentService.getUserInfoByUserName(userName);
     }
 
 

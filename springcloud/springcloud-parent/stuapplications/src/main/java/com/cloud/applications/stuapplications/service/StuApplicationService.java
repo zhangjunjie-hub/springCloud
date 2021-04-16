@@ -2,10 +2,12 @@ package com.cloud.applications.stuapplications.service;
 
 import com.cloud.applications.stuapplications.dao.StudentDao;
 import com.cloud.applications.stuapplications.dto.Student;
+import com.cloud.applications.stuapplications.dto.StudentWapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -25,4 +27,7 @@ public interface StuApplicationService{
 
     @GetMapping(value = "/student/getAllStudents")
     List<Student> getAllStudents();
+
+    @GetMapping(value = "/student/getUserInfoByUserName/{userName}")
+    StudentWapper getUserInfoByUserName(@PathVariable String userName);
 }

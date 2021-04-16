@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/springcloud-eureka-apiinfo/springcloud-eureka-apiinfo.iml" filepath="$PROJECT_DIR$/springcloud-eureka-apiinfo/springcloud-eureka-apiinfo.iml" />
       <module fileurl="file://$PROJECT_DIR$/springcloud-ms-eureka/springcloud-ms-eureka.iml" filepath="$PROJECT_DIR$/springcloud-ms-eureka/springcloud-ms-eureka.iml" />
       <module fileurl="file://$PROJECT_DIR$/springcloud-parent.iml" filepath="$PROJECT_DIR$/springcloud-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud_zuul/springcloud_zuul.iml" filepath="$PROJECT_DIR$/springcloud_zuul/springcloud_zuul.iml" />
       <module fileurl="file://$PROJECT_DIR$/stuapplications/stuapplications.iml" filepath="$PROJECT_DIR$/stuapplications/stuapplications.iml" />
     </modules>
   </component>
