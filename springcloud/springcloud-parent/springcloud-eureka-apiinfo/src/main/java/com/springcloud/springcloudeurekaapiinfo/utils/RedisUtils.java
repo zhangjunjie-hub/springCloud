@@ -17,8 +17,12 @@ import java.util.Set;
 
 @Component
 public class RedisUtils {
+
     @Autowired
     private JedisPool jedisPool;
+
+
+
 
     /**
      * 这个是默认采用编号为0的redis数据库
@@ -43,15 +47,16 @@ public class RedisUtils {
         //从jedis连接池中获取redis连接信息
         try{
             jedis = jedisPool.getResource();
+            jedis.getClient().setPassword("123456");
             //选择redis对应的数据库
             jedis.select(indexDb);
             value = jedis.get(key);
+            System.out.println("redis查询获取到的数据信息,key="+key+",获取到的value:"+value);
         }catch (Exception e){
             System.out.println("redis的get方法出错了，"+e.getMessage());
         }finally {
             returnResource(jedisPool, jedis);
         }
-        System.out.println("redis查询获取到的数据信息,key="+key+",获取到的value:"+value);
         return value;
     }
 
